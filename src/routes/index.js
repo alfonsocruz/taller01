@@ -1,4 +1,6 @@
 import { useRoutes } from "react-router-dom";
+
+import { AlreadyLoggedIn, PublicRoute, ProtectedRoute } from "./middlewares";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import Directory from "../pages/Directory";
@@ -7,16 +9,20 @@ import NotFound from "../pages/NotFound";
 const Router = () => {
     const routes = useRoutes([
         {
+            path: "/",
+            element: <AlreadyLoggedIn />,
+        },
+        {
             path: "/sign-in",
-            element: <SignIn />,
+            element: <PublicRoute><SignIn /></PublicRoute>,
         },
         {
             path: "/sign-up",
-            element: <SignUp />,
+            element: <PublicRoute><SignUp /></PublicRoute>,
         },
         {
             path: "/directory",
-            element: <Directory />,
+            element: <ProtectedRoute><Directory /></ProtectedRoute>,
         },
         {
             path: "*",

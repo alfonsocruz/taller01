@@ -1,3 +1,11 @@
+import * as React from 'react';
+import { useNavigate } from "react-router-dom";
+
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import TableChartIcon from '@mui/icons-material/TableChart';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import { styled } from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -6,7 +14,6 @@ import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import { mainListItems } from '../components/listitems';
 
 const drawerWidth = 240;
 
@@ -38,6 +45,12 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 export default function SideBar(props) {
     const { open, handleDrawerClose } = props;
+    const navigate = useNavigate();
+
+    const logOut = () => {
+        sessionStorage.clear();
+        navigate('/sign-in');
+    }
 
     return (
         <Drawer variant="permanent" open={open}>
@@ -55,7 +68,20 @@ export default function SideBar(props) {
             </Toolbar>
             <Divider />
             <List component="nav">
-                {mainListItems}
+                <React.Fragment>
+                    <ListItemButton onClick={() => navigate('/directory')}>
+                        <ListItemIcon>
+                            <TableChartIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Directorio" />
+                    </ListItemButton>
+                    <ListItemButton onClick={logOut}>
+                        <ListItemIcon>
+                            <ExitToAppIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="Cerrar Sesión" />
+                    </ListItemButton>
+                </React.Fragment>
                 <Divider sx={{ my: 1 }} />
             </List>
         </Drawer>

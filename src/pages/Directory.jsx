@@ -13,7 +13,7 @@ import Container from '@mui/material/Container';
 import Copyright from '../components/Copyright';
 import NavBar from '../components/NavBar';
 import SideBar from '../components/SideBar';
-import Orders from '../components/People';
+import People from '../components/People';
 
 const defaultTheme = createTheme();
 
@@ -47,10 +47,9 @@ export default function Dashboard() {
                     <Toolbar />
                     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
                         <Grid container spacing={3}>
-                            {/* Recent Orders */}
                             <Grid item xs={12}>
                                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                                    <Orders />
+                                    <People />
                                 </Paper>
                             </Grid>
                         </Grid>

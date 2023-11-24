@@ -5,9 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Typography from '@mui/material/Typography';
-import Badge from '@mui/material/Badge';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-
+import { getValidToken } from '../routes/middlewares';
 const drawerWidth = 240;
 
 const AppBar = styled(MuiAppBar, {
@@ -30,6 +28,7 @@ const AppBar = styled(MuiAppBar, {
 
 export default function NavBar(props) {
     const { open, handleDrawerOpen } = props;
+    const user = getValidToken();
 
     return (
         <AppBar position="absolute" open={open}>
@@ -59,11 +58,7 @@ export default function NavBar(props) {
                 >
                     Dashboard
                 </Typography>
-                <IconButton color="inherit">
-                    <Badge badgeContent={4} color="secondary">
-                        <NotificationsIcon />
-                    </Badge>
-                </IconButton>
+                {user.nombre} {user.apellidos}
             </Toolbar>
         </AppBar>
     )
