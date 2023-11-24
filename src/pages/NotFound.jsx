@@ -1,16 +1,23 @@
 import React from "react";
-import { Box, Typography, Link, Stack, Grid, Divider } from "@mui/material";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+import Divider from "@mui/material/Divider";
+import Container from "@mui/material/Container";
+import Paper from "@mui/material/Paper";
 import CssBaseline from "@mui/material/CssBaseline";
-import { ThemeProvider } from "@mui/material/styles";
-import { theme } from "@src/theme/index";
 
-const NotFound = (props) => {
+import Copyright from '../components/Copyright';
+
+export default function NotFound() {
+
     return (
-        <ThemeProvider theme={theme}>
-            <Box sx={{ display: "flex" }}>
+        <Container component="main" maxWidth="lg">
+            <Box sx={{ display: "flex" }} component={Paper}>
                 <CssBaseline />
-                <Box sx={{ flexGrow: 1, p: 3, mt: 35 }} alignItems="center">
-                    <Stack
+                <Box sx={{ flexGrow: 1, p: 3, mt: 40 }} alignItems="center">
+                    <Grid
                         direction="row"
                         divider={<Divider orientation="vertical" flexItem />}
                         spacing={2}
@@ -18,19 +25,20 @@ const NotFound = (props) => {
                     >
                         <Grid item xs={12} sm={12} md={7} lg={7}>
                             <Typography variant="h1" component="div" gutterBottom>
-                                LA PÁGINA
+                                ERROR 404
                             </Typography>
                             <Typography variant="h1" component="div" gutterBottom>
-                                NO FUE ENCONTRADA
+                                PÁGINA NO ENCONTRADA
                             </Typography>
                             <Typography variant="h4" component="div" gutterBottom>
                                 <Link href="/">IR AL INICIO</Link>
                             </Typography>
                         </Grid>
-                    </Stack>
+                    </Grid>
                 </Box>
             </Box>
-        </ThemeProvider>
+
+            <Copyright sx={{ mt: 8, mb: 4 }} />
+        </Container>
     );
 }
-export default NotFound;

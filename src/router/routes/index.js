@@ -1,5 +1,0 @@
-const Routes = [
-
-];
-
-export { Routes }
